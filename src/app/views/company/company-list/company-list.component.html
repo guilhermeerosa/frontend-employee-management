@@ -1,0 +1,31 @@
+<div class="row mt-3 mx-5">
+  <button type="button" class="btn btn-secondary col" (click)="back()">Voltar</button>
+  <h3 class="text-center col-10">Lista de Empresas</h3>
+  <button type="button" class="btn btn-success col" (click)="createCompany()">Nova Empresa</button>
+</div>
+
+<div class="row justify-content-center mt-3">
+  <div class="col-10">
+    <table class="table table-responsive table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" class="text-center">Nome</th>
+          <th scope="col" class="text-center">CNPJ</th>
+          <th scope="col" class="text-center">Funcionários</th>
+          <th scope="col" class="text-center">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let company of companies">
+          <td>{{company.name}}</td>
+          <td>{{company.cnpj}}</td>
+          <td class="text-center">{{getLengthUsers(company)}}</td>
+          <td class="text-center">
+            <button type="button" class="btn btn-primary" [routerLink]="[company.id, 'edit']">Detalhes</button>
+            <button class="btn btn-danger" (click)="deleteCompany(company)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
